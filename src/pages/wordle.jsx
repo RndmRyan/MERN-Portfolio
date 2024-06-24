@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 import WordleBoard from '../components/wordle/wordleboard';
 
+import { initializeBoard, handleLetter, handleBackspace, evaluateGuess, fetchTargetWord } from '..components/wordle/wordleUtil';
+
+
 function Wordle() 
 {
   const navigate = useNavigate();
@@ -13,11 +16,7 @@ function Wordle()
   };
 
 
-  const [board, setBoard] = useState(
-    Array(6).fill().map(() => Array(5).fill({ letter: '', color: 'grey' }))
-  );
-
-  const [targetWord, setTargetWord] = useState('');
+  const [board, setBoard] = useState(initializeBoard());
   const [currentCell, setCurrentCell] = useState(0);
   const [currentRow, setCurrentRow] = useState(0);
   const [message, setMessage] = useState('');
@@ -26,23 +25,20 @@ function Wordle()
 
 
   useEffect(() => {
-    fetch('http://localhost:2010/getword')
-      .then(response => response.json())
-      .then(data => setTargetWord(data.word));
+    fetchTargetWord().then(word => setTargetWord(word));
   }, []);
-
 
   useEffect(() => {
     const handleKeyPress = (event) => {
-      if (gameOver) return; 
+      if (gameOver) return;
 
       const key = event.key;
       if (key === 'Backspace') {
-        handleBackspace();
+        handleBackspacePress();
       } else if (key === 'Enter') {
-        handleEnter();
+        handleEnterPress();
       } else if (/^[a-zA-Z]$/.test(key)) {
-        handleLetter(key.toUpperCase());
+        handleLetterPress(key.toUpperCase());
       }
     };
 
@@ -53,76 +49,53 @@ function Wordle()
     };
   }, [currentCell, currentRow, board, gameOver]);
 
-  const handleLetter = (letter) => {
+  const handleLetterPress = (letter) => {
     setNotify('');
-    if (currentCell < 5) {
-      const newBoard = board.map((row, rowIndex) =>
-        row.map((cell, colIndex) => {
-          if (rowIndex === currentRow && colIndex === currentCell) {
-            return { letter, color: 'grey' };
-          }
-          return cell;
-        })
-      );
+    const newBoard = handleLetter(board, currentRow, currentCell, letter);
+    if (newBoard !== board) {
       setBoard(newBoard);
       setCurrentCell((prevCell) => prevCell + 1);
     }
   };
 
-  const handleBackspace = () => {
+  const handleBackspacePress = () => {
     setNotify('');
-    if (currentCell > 0) {
-      const newBoard = board.map((row, rowIndex) =>
-        row.map((cell, colIndex) => {
-          if (rowIndex === currentRow && colIndex === currentCell - 1) {
-            return { letter: '', color: 'grey' };
-          }
-          return cell;
-        })
-      );
+    const newBoard = handleBackspace(board, currentRow, currentCell);
+    if (newBoard !== board) {
       setBoard(newBoard);
       setCurrentCell((prevCell) => prevCell - 1);
     }
   };
 
-  const handleEnter = () => {
+  const handleEnterPress = () => {
     if (currentCell === 5) {
       const guess = board[currentRow].map(cell => cell.letter).join('');
-      fetch('http://localhost:2010/evaluate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ guess }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.message) {
-            setNotify(data.message);
-          } else {
-            const newBoard = board.map((row, rowIndex) =>
-              row.map((cell, colIndex) => {
-                if (rowIndex === currentRow) {
-                  return { letter: cell.letter, color: data.colors[colIndex] };
-                }
-                return cell;
-              })
-            );
-            setBoard(newBoard);
+      evaluateGuess(guess).then(data => {
+        if (data.message) {
+          setNotify(data.message);
+        } else {
+          const newBoard = board.map((row, rowIndex) =>
+            row.map((cell, colIndex) => {
+              if (rowIndex === currentRow) {
+                return { letter: cell.letter, color: data.colors[colIndex] };
+              }
+              return cell;
+            })
+          );
+          setBoard(newBoard);
 
-            // Check if all colors are green
-            if (data.colors.every(color => color === 'green')) {
-              setMessage('You Guessed Correctly!');
-              setGameOver(true); // Freeze the game
-            } else if (currentRow < 5) {
-              setCurrentRow((prevRow) => prevRow + 1);
-              setCurrentCell(0);
-            } else {
-              setMessage(`Game Over, the word was ${targetWord}`);
-              setGameOver(true); // Freeze the game
-            }
+          if (data.colors.every(color => color === 'green')) {
+            setMessage('You Guessed Correctly!');
+            setGameOver(true);
+          } else if (currentRow < 5) {
+            setCurrentRow((prevRow) => prevRow + 1);
+            setCurrentCell(0);
+          } else {
+            setMessage(`Game Over, the word was ${targetWord}`);
+            setGameOver(true);
           }
-        });
+        }
+      });
     }
   };
 

@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home/>} />
 
         <Route path="/TicTacToe" element={<TicTacToe />} />
