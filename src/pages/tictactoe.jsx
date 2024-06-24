@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import './tictactoe.css'
+import './stylesheets/tictactoe.css'
 
 import GameBoard from '../components/tictactoe/gameboard';
 import GameOptions from '../components/tictactoe/gameoptions';

@@ -1,0 +1,78 @@
+body {
+    background-image: url('../../assets/background.jpg');
+    background-repeat: repeat;
+}
+
+.goHome{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.GameTitle{
+    font-family: verdana;
+}
+
+.MainPart{
+    width: 60vw;
+}
+
+
+.WordleBoard, .Options{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.8px);
+    -webkit-backdrop-filter: blur(17.8px);
+}
+
+.WordleBoard{
+    margin: 30px 0px;
+    padding: 30px 0px;
+}
+
+.Wordle{
+    margin: auto;
+}
+
+.Wordle td{
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background 0.2s, border 0.2s;
+}
+
+.Wordle .current-row td {
+    background: #333;
+}
+
+.green {
+    background-color: green;
+}  
+.yellow {
+    background-color: yellow;
+}
+
+.grey {
+    background: #232323;
+}
+
+.Wordle .current-cell {
+    box-shadow: inset 0 0 2px white;
+}
+
+.Options{
+    padding: 10px 20px;
+}
+
+.Notify{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: lightsalmon;
+    color: black;
+    font-size: large;
+    padding: 10px 20px;
+    border-radius: 8px;
+}

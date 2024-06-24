@@ -3,7 +3,7 @@ import React from 'react';
 const GameOptions = ({ starter, setStarter, newGame, resetScores }) => {
     return (
         <div className='GameOptions'>
-            <p>Who starts:
+            <p>First Move:
                 <label>
                     <input 
                         type="radio" 

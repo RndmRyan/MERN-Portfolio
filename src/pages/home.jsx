@@ -1,5 +1,5 @@
 import React from 'react'
-import './home.css'
+import './stylesheets/home.css'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -19,7 +19,7 @@ function home()
         <h2>Play a Game</h2>
         <div className="options">
           <button onClick={setpathTicTacToe}>TicTacToe</button>
-          <button onClick={setpathWordle}>Wordle (Currently Under Development)</button>
+          <button onClick={setpathWordle}>Wordle</button>
         </div>
       </div>
     </>
