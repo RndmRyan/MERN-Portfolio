@@ -71,6 +71,11 @@ function tictactoe()
         setTurn(starter);
     }
 
+    const resetScores = () => {
+        setAiScore(0);
+        setHumanScore(0);
+    }
+
     return (
         <>
         <button className="goHome" onClick={setpathHome}>Home</button>
@@ -88,7 +93,7 @@ function tictactoe()
 
             {message && <div className='Message'>{message}</div>}
 
-            <GameOptions starter={starter} setStarter={setStarter} newGame={newGame} />
+            <GameOptions starter={starter} setStarter={setStarter} newGame={newGame} resetScores={resetScores} />
         </div>
     </>
   )

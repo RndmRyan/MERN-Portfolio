@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameOptions = ({ starter, setStarter, newGame }) => {
+const GameOptions = ({ starter, setStarter, newGame, resetScores }) => {
     return (
         <div className='GameOptions'>
             <p>Who starts:
@@ -25,7 +25,10 @@ const GameOptions = ({ starter, setStarter, newGame }) => {
                     AI
                 </label>
             </p>
+            <div className="Optionbuttons">
             <button onClick={newGame}>New Game</button>
+            <button onClick={resetScores}>Reset Scores</button>
+            </div>
         </div>
     );
 }

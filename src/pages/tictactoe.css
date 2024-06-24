@@ -63,3 +63,9 @@ td{
 .GameOptions{
     padding: 10px 20px;
 }
+
+.Optionbuttons{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-evenly;
+}
