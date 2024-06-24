@@ -17,6 +17,7 @@ function Wordle()
 
 
   const [board, setBoard] = useState(initializeBoard());
+  const [targetWord, setTargetWord] = useState('');
   const [currentCell, setCurrentCell] = useState(0);
   const [currentRow, setCurrentRow] = useState(0);
   const [message, setMessage] = useState('');
