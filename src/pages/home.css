@@ -1,0 +1,9 @@
+.container{
+
+}
+
+.options{
+    width: 50vw;
+    display: flex;
+    justify-content:space-between;
+}

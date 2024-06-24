@@ -1,0 +1,65 @@
+body {
+    background-image: url('../assets/background.jpg');
+    background-repeat: repeat;
+}
+
+.goHome{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.MainBody{
+    width: 60vw;
+}
+
+.ScoreBoard{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Score, .GameBoard, .GameOptions, .Message{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.8px);
+    -webkit-backdrop-filter: blur(17.8px);
+}
+
+.Score{
+    padding: 10px 20px;
+}
+
+.GameBoard{
+    margin: 30px 0px;
+    padding: 50px 0px;
+}
+
+.Game{
+    margin: auto;
+}
+
+.Game td+td{
+    border-left: 5px solid white;
+}
+.Game tr+tr td{
+    border-top: 5px solid white;    
+}
+
+td{
+    padding: 10px 30px;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Message {
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: Verdana;
+    font-size: x-large;
+}
+
+.GameOptions{
+    padding: 10px 20px;
+}

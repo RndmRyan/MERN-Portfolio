@@ -1,0 +1,43 @@
+body {
+    background-image: url('../assets/background.jpg');
+    background-repeat: repeat;
+}
+
+.goHome{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.MainPart{
+    width: 60vw;
+}
+
+
+.WordleBoard, .Options{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.8px);
+    -webkit-backdrop-filter: blur(17.8px);
+}
+
+.WordleBoard{
+    margin: 30px 0px;
+    padding: 50px 0px;
+}
+
+.Wordle{
+    margin: auto;
+}
+
+.Wordle td{
+    border: 2px solid white;
+    padding: 5px 20px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.GameOptions{
+    padding: 10px 20px;
+}
