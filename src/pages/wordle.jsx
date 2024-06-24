@@ -99,6 +99,16 @@ function Wordle()
     }
   };
 
+  const resetGame = () => {
+    setBoard(initializeBoard());
+    setCurrentCell(0);
+    setCurrentRow(0);
+    setMessage('');
+    setNotify('');
+    setGameOver(false);
+    fetchTargetWord().then(word => setTargetWord(word));
+  };
+
   return (
     <>
       <button className="goHome" onClick={setpathHome}>Home</button>
@@ -112,7 +122,7 @@ function Wordle()
         <WordleBoard board={board} currentRow={currentRow} currentCell={currentCell} />
 
         <div className='Options'>
-          <button onClick={() => window.location.reload()}>New Game</button>
+          <button onClick={resetGame}>New Game</button>
         </div>
       </div>
     </>
