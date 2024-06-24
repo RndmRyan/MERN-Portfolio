@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import WordleBoard from '../components/wordle/wordleboard';
 
-import { initializeBoard, handleLetter, handleBackspace, evaluateGuess, fetchTargetWord } from '..components/wordle/wordleUtil';
+import { initializeBoard, handleLetter, handleBackspace, evaluateGuess, fetchTargetWord } from '../components/wordle/wordleUtil';
 
 
 function Wordle() 
