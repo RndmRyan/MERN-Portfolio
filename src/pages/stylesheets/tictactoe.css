@@ -55,6 +55,15 @@ td{
     height: 60px;
 }
 
+.fakeX {
+    opacity: 0;
+}
+
+.fakeX:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
 .Message {
     padding: 20px;
     margin-bottom: 20px;

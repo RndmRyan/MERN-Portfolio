@@ -18,7 +18,7 @@ body {
 }
 
 
-.WordleBoard, .Options{
+.WordleBoard, .Options, .KeyBoard{
     background: rgba(255, 255, 255, 0.07);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -26,10 +26,11 @@ body {
     -webkit-backdrop-filter: blur(17.8px);
 }
 
-.WordleBoard{
-    margin: 30px 0px;
-    padding: 30px 0px;
+.WordleBoard, .KeyBoard{
+    margin: 10px 0px;
+    padding: 20px 0px;
 }
+
 
 .Wordle{
     margin: auto;
@@ -44,8 +45,29 @@ body {
 }
 
 .Wordle .current-row td {
-    background: #333;
+    background-color: #222;
 }
+
+
+/* ----- KeyBoard CSS ------ */
+
+.Line{
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.Letters {
+    font-size: large;
+    background-color: #232323;
+    border-radius: 5px;
+    padding: 0px 10px;
+    height: 35px;
+    margin: 0px 1px;
+    cursor: pointer;
+}
+
+
 
 .green {
     background-color: green;
@@ -55,11 +77,15 @@ body {
 }
 
 .grey {
-    background: #232323;
+    background-color: #444;
+}
+
+.default {
+    background-color: #111;
 }
 
 .Wordle .current-cell {
-    box-shadow: inset 0 0 2px white;
+    box-shadow: inset 0 0 3px white;
 }
 
 .Options{

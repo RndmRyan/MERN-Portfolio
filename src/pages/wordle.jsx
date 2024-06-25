@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './stylesheets/wordle.css';
 import { useNavigate } from 'react-router-dom';
 
 import WordleBoard from '../components/wordle/wordleboard';
+import KeyBoard from '../components/wordle/keyboard';
 
 import { initializeBoard, handleLetter, handleBackspace, evaluateGuess, fetchTargetWord } from '../components/wordle/wordleUtil';
 
+export const WordleContext = createContext();
 
 function Wordle() 
 {
@@ -23,6 +25,9 @@ function Wordle()
   const [message, setMessage] = useState('');
   const [notify, setNotify] = useState('');
   const [gameOver, setGameOver] = useState(false);
+  const [disabledLetters, setDisabledLetters] = useState([]);
+  const [correctLetters, setCorrectLetters] = useState([]);
+  const [almostLetters, setAlmostLetters] = useState([]);
 
 
   useEffect(() => {
@@ -59,7 +64,8 @@ function Wordle()
     }
   };
 
-  const handleBackspacePress = () => {
+  const handleBackspacePress = () => 
+  {
     setNotify('');
     const newBoard = handleBackspace(board, currentRow, currentCell);
     if (newBoard !== board) {
@@ -69,12 +75,14 @@ function Wordle()
   };
 
   const handleEnterPress = () => {
-    if (currentCell === 5) {
+    if (currentCell === 5) 
+    {
       const guess = board[currentRow].map(cell => cell.letter).join('');
       evaluateGuess(guess).then(data => {
         if (data.message) {
           setNotify(data.message);
-        } else {
+        } 
+        else {
           const newBoard = board.map((row, rowIndex) =>
             row.map((cell, colIndex) => {
               if (rowIndex === currentRow) {
@@ -84,6 +92,32 @@ function Wordle()
             })
           );
           setBoard(newBoard);
+
+          const newDisabledLetters = [...disabledLetters];
+          const newCorrectLetters = [...correctLetters];
+          const newAlmostLetters = [...almostLetters];
+
+          data.colors.forEach((color, index) => {
+            const letter = guess[index];
+            if (color === 'green') {
+              if (!newCorrectLetters.includes(letter)) {
+                newCorrectLetters.push(letter);
+              }
+            } else if (color === 'yellow') {
+              if (!newAlmostLetters.includes(letter) && !newCorrectLetters.includes(letter)) {
+                newAlmostLetters.push(letter);
+              }
+            } else {
+              if (!newDisabledLetters.includes(letter)) {
+                newDisabledLetters.push(letter);
+              }
+            }
+          });
+
+          setDisabledLetters(newDisabledLetters);
+          setCorrectLetters(newCorrectLetters);
+          setAlmostLetters(newAlmostLetters);
+
 
           if (data.colors.every(color => color === 'green')) {
             setMessage('You Guessed Correctly!');
@@ -108,6 +142,9 @@ function Wordle()
     setNotify('');
     setGameOver(false);
     fetchTargetWord().then(word => setTargetWord(word));
+    setDisabledLetters([]);
+    setAlmostLetters([]);
+    setCorrectLetters([]);
   };
 
   return (
@@ -122,8 +159,13 @@ function Wordle()
       <div className='MainPart'>
         <WordleBoard board={board} currentRow={currentRow} currentCell={currentCell} />
 
+        <WordleContext.Provider value={{gameOver, handleLetterPress, handleEnterPress,
+           handleBackspacePress, disabledLetters, correctLetters, almostLetters}}>
+          <KeyBoard />
+        </WordleContext.Provider>
+
         <div className='Options'>
-          <button onClick={resetGame}>New Game</button>
+          <button onClick={()=>{resetGame(); document.activeElement.blur();}}>New Game</button>
         </div>
       </div>
     </>

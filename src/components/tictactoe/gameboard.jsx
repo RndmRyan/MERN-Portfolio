@@ -3,7 +3,7 @@ import React from 'react';
 const GameBoard = ({ board, handleCellClick }) => {
     const renderCell = (value, rowIndex, colIndex) => {
         return (
-            <td key={colIndex} onClick={() => handleCellClick(rowIndex, colIndex)}>{value}</td>
+            <td key={colIndex} className={value ? '' : 'fakeX'} onClick={() => handleCellClick(rowIndex, colIndex)}>{value ? value : 'X'}</td>
         );
     }
 
