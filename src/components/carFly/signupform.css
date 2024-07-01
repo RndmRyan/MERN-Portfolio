@@ -1,0 +1,48 @@
+.SignUpForm{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 40px;
+}
+  
+.SignUpForm h1{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+  
+.form-group{
+    padding: 0em 10em;
+}
+.form-group label{
+    color: red;
+    font-size: smaller;
+    margin: 0;
+}
+
+.formbutton{
+    padding: 10px;
+    margin: 15px 0px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(245,115,5,1);
+}
+  
+.formbutton:hover{
+    cursor:pointer;
+    background-color: rgba(225,95,0,1);
+}
+.formbutton:active{
+    transform: translateY(2px);
+}
+
+@media screen and (max-width: 1000px) {
+    .SignUpForm{
+      width: 100% ;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .form-group{
+        padding: 0em 3em;
+    }
+  }

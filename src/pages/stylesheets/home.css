@@ -1,9 +1,6 @@
-.container{
-
-}
-
 .options{
     width: 50vw;
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
+    margin: 30px;
 }

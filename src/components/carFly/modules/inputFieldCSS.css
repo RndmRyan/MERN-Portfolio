@@ -1,0 +1,37 @@
+.PasswordVisibility{
+    border:none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 5px 10px;
+    color: #666;
+}
+.PasswordVisibility:hover{
+    cursor:pointer;
+}
+.PasswordVisibility:active{
+    transform: translateY(2px);
+}
+
+.input-group{
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 1px solid #AAA;
+    display: flex;
+}
+
+.input-group:focus{
+    outline: orangered solid 1px;
+    box-shadow: none;
+}
+.input-group.error{
+    border-color: red;
+}
+
+.form-control{
+    border: none;
+    box-shadow: none;
+}
+.form-control:focus{
+    border: none;
+    box-shadow: none;
+}

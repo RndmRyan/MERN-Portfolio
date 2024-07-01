@@ -1,0 +1,141 @@
+.jobpost{
+    background-color: white;
+    border-left: 4px solid hsl(180, 29%, 50%);
+    border-radius: 8px;
+    display: flex;
+    color: black;
+    width: 75vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 20px;
+}
+
+.rightSide{   
+    display: flex;
+}
+
+#companyLogo{
+    height: 60px;
+    width: 60px;
+    margin: auto;
+    margin-right: 15px;
+}
+
+.Company{
+    display: flex;
+    align-items: center;
+}
+
+.Company p{
+    margin: 0;
+}
+
+#CompanyName{
+    color:  hsl(180, 40%, 40%);
+    font-weight: bolder;
+    font-size: small;
+    margin-right: 10px;
+}
+
+#NewTag{
+    background-color: hsl(180, 40%, 40%);
+    padding: 1px 6px;
+    border-radius: 20px;
+    color:  white;
+    font-weight: bolder;
+    font-size: x-small;
+    margin-right: 5px;
+}
+#FeaturedTag{
+    background-color: dimgray;
+    padding: 1px 7px;
+    border-radius: 20px;
+    color:  white;
+    font-weight: bolder;
+    font-size: x-small;
+}
+
+#jobTitle{
+    margin: 5px auto;
+    font-size: x-large;
+    font-weight: bolder;
+    color: black;
+    text-align: left;
+}
+
+#jobTitle:hover{
+    color:hsl(180, 40%, 40%);
+    cursor: pointer;
+}
+#jobTitle:active{
+    color:hsl(200, 30%, 30%);
+    transform: scale(0.9);
+}
+
+.subDetails{
+    display: flex;
+    color: gray;
+    font-size: smaller;
+}
+
+.subDetails p{
+    margin: 0;
+    margin-right: 20px;
+}
+
+.jobTags{
+    display: flex;
+    justify-content: space-around;
+}
+
+.jobTags p{
+    background-color: hsl(180, 46%, 78%);
+    color:  hsl(180, 40%, 40%);
+    font-weight: bolder;
+    margin: 10px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: smaller;
+}
+
+.jobTags p:hover{
+    background-color: hsl(180, 40%, 40%);
+    color:  white;
+    cursor: pointer;
+}
+.jobTags p:active{
+    background-color: hsl(200, 30%, 30%);
+    transform: scale(0.95);
+}
+
+@media screen and (max-width: 800px) 
+{
+    .jobpost{
+        display: block;
+        padding: 15px;
+        margin: 20px;
+    }
+    #companyLogo{
+        margin: auto 15px auto 0px;
+    }
+    .jobTags{
+        width:fit-content;
+    }
+}
+
+@media screen and (max-width: 600px) 
+{    .jobpost{
+    display: block;
+    padding: 15px;
+    margin-top: 45px;
+    }
+    .rightSide{
+        display: block;
+        align-items: left;
+    }
+    #companyLogo{
+        display: block;
+        margin-top: -45px;
+    }
+}

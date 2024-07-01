@@ -1,0 +1,47 @@
+.strenghtLevel{
+    display: flex;
+    justify-content: space-between;
+    background-color: #1A1A1A;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.strenghticon{
+    display: flex;
+    justify-content: space-between;
+}
+
+.squareIndicators{
+    display: flex;
+    margin-left: 10px;
+}
+
+.indicator{
+    margin: 15px 0px 15px 5px;
+    padding: 5px
+}
+
+@media (max-width: 550px) {
+    .strenghtLevel {
+        display: block;
+        background-color: #1A1A1A;
+        text-align: center;
+        padding-top: 5px;
+        margin: 0;
+    }
+    .strenghticon {
+        display: block;
+        padding-bottom: 5px;
+    }
+    .squareIndicators{
+        margin: 0;
+        justify-content: center;
+    }
+
+    .indicator{
+        align-self: center;
+        height: 10px;
+        margin-top: 0px
+    }
+  }

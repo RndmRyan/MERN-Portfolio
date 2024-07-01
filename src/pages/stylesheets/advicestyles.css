@@ -1,0 +1,109 @@
+.attribution { font-size: 11px; 
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 20px;
+    color: white;
+  }
+  .attribution a { color: hsl(228, 45%, 44%); }
+  
+  
+.goHome{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+  body {
+    background-color: #202632; 
+    width: 99vw;
+    height: 97vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .advice_container {
+    background-color: #313a49;
+    border-radius: 10px;
+    padding: 30px;
+    width: 20em;
+    text-align: center;
+    box-shadow: 7px 7px 20px #101622;
+  }
+
+  #advice_no{
+    color: #53ffab;
+    font-size: x-small;
+    font-family: Tahoma;
+    font-weight: 600;
+  }
+
+  #advice_content{
+    color: lightgray;
+    font-family: Arial;
+    font-size: larger;
+    font-weight: 600;
+    padding: 25px;
+  }
+
+  #new_advice button{
+    border-radius: 100px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 14px;
+    padding-bottom: 12px;
+    background-color: #53ffab;
+    color:black;
+    border: 0px;
+    margin-top: -30px;
+  }
+
+  #new_advice button:active{
+    background-color: #53ffab;
+    box-shadow: 0px 0px 30px #53ffab;
+  }
+
+  #new_advice button:hover{
+    cursor: pointer;
+  }
+
+  #new_advice button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  #new_advice button.disabled:hover {
+    cursor: not-allowed;
+  }
+
+  #new_advice button.disabled:active {
+    box-shadow: none;
+  }
+
+  .share-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    width: 20em;
+  }
+
+  .share-container p {
+    color: #53ffab;
+    font-size: x-small;
+    font-family: Tahoma;
+    font-weight: 600;
+  }
+
+  .share-container i {
+    cursor: pointer;
+    color: #fff;
+    font-size: 0.75em;
+  }
+
+  .share-container i:hover {
+    color: #32a85f;
+  }

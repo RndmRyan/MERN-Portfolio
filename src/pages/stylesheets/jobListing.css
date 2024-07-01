@@ -1,0 +1,82 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .activefilters{
+    display: flex;
+    background-color: white;
+    width: 65vw;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+  }
+  
+  .Tags{
+    display:flex;
+    margin: 0px 10px;
+    justify-content: left;
+  }
+  
+  .filterTag{
+    display:flex;
+    margin: 0px 10px;
+    justify-content: left;
+  }
+  .filterTag p{
+    background-color: hsl(180, 46%, 78%);
+    color:  hsl(180, 40%, 40%);
+    font-weight: bolder;
+    padding: 3px 7px;
+    border-radius: 3px 0px 0px 3px;
+    font-size: smaller;
+  }
+  
+  .filterTag i{
+    background-color: hsl(200, 30%, 30%);
+    color: white;
+    padding: 5px 5px;
+    border-radius: 0px 3px 3px 0px;
+    margin: auto
+  }
+  
+  .filterTag i:hover{
+    background-color: hsl(180, 40%, 40%);
+    color:  white;
+    cursor: pointer;
+  }
+  .filterTag i:active{
+    background-color: hsl(200, 15%, 15%);
+    transform: scale(0.95);
+  }
+  
+  .clearButton{
+    color: hsl(180, 40%, 40%);
+    background-color: white;
+    border: none;
+  }
+  .clearButton:hover{
+    text-decoration: underline;
+    border:none;
+  }
+  .clearButton:active{
+    transform: scale(0.95);
+  }
+  
+  @media screen and (max-width: 700px) 
+  {
+      .activefilters{
+          display: block;
+          justify-content: center;
+      }
+      .Tags{
+        display: block;
+      }
+      .filterTag{
+        width: max-content;
+      }
+  }
